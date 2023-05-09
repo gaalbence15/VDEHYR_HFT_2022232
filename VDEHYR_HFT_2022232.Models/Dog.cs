@@ -25,12 +25,16 @@ namespace VDEHYR_HFT_2022232.Models
         [StringLength(10)]
         public int Weight { get; set; }
         public int Color { get; set; }
+        public int OwnerId { get; set; }
+        public int BreedId { get; set; }
         [JsonIgnore]
+        [NotMapped]
         public virtual Breed Breed { get; set; }
         [JsonIgnore]
+        [NotMapped]
         public virtual Owner Owner { get; set; }
         public Dog() { }
-        public Dog(int id, string name, int birthYear, int weight, int color, int breedId)
+        public Dog(int id, string name, int birthYear, int weight, int color, int ownerId, int breedId)
         {
             if (!(color > 0 && color <= 5))
             {
@@ -41,6 +45,7 @@ namespace VDEHYR_HFT_2022232.Models
             BirthYear = birthYear;
             Weight = weight;
             Color = color;
+            OwnerId = ownerId;
             BreedId = breedId;
         }
         public override string ToString()

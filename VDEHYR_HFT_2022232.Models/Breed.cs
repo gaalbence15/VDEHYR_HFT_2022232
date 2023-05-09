@@ -19,18 +19,16 @@ namespace VDEHYR_HFT_2022232.Models
         [StringLength(50)]
         public string Origin { get; set; }
         public int Lifespan { get; set; }
-        public int DogId { get; set; }
         [JsonIgnore]
         [NotMapped]
-        public virtual Dog Dog { get; set; }
+        public virtual ICollection<Dog> Dogs { get; set; }
         public Breed() {}
-        public Breed(int id, string name, string origin, int lifespan, int dogId)
+        public Breed(int id, string name, string origin, int lifespan)
         {
             Id = id;
             Name = name;
             Origin = origin;
             Lifespan = lifespan;
-            DogId = dogId;
         }
         public override string ToString()
         {

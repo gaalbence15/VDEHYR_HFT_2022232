@@ -24,22 +24,53 @@ namespace VDEHYR_HFT_2022232.Repository.Database
                 optionsBuilder.UseLazyLoadingProxies()
                     .UseInMemoryDatabase("Dogs");
             }
+            base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Breed>(breed => breed
-                .HasOne(breed => breed.Dog)
-                .WithOne(dog => dog.Breed)
+            modelBuilder.Entity<Dog>(d => d
+                .HasOne(d => d.Owner)
+                .WithMany(o => o.Dogs)
+                .HasForeignKey(d => d.OwnerId)
                 .OnDelete(DeleteBehavior.Cascade));
 
-            modelBuilder.Entity<Owner>(owner => owner
-                .HasMany(owner => owner.Dogs)
-                .WithOne(dog => dog.Owner)
+            modelBuilder.Entity<Breed>(b => b
+                .HasMany(b => b.Dogs)
+                .WithOne(d => d.Breed)
+                .HasForeignKey(b => b.BreedId)
                 .OnDelete(DeleteBehavior.Cascade));
 
-            //modelBuilder.Entity<Dog>(dog => dog
-            //    .HasOne(dog => dog.Owner)
-            //    .WithOne(owner => owner.Dogs))
+            var dogs = new Dog[]
+            {
+                new Dog(){ Id = 1, Name = "Shadow", BirthYear = 2022, Weight = 55, Color = 5, OwnerId = 1, BreedId = 1},
+                new Dog(){ Id = 2, Name = "Bentley", BirthYear = 2014, Weight = 80, Color = 4, OwnerId = 1, BreedId = 2},
+                new Dog(){ Id = 3, Name = "Atticus", BirthYear = 2007, Weight = 72, Color = 3, OwnerId = 1, BreedId = 3},
+                new Dog(){ Id = 4, Name = "Brutus", BirthYear = 2023, Weight = 21, Color = 2, OwnerId = 2, BreedId = 4},
+                new Dog(){ Id = 5, Name = "Pluto", BirthYear = 2016, Weight = 45, Color = 1, OwnerId = 3, BreedId = 5},
+                new Dog(){ Id = 6, Name = "Bruno", BirthYear = 2023, Weight = 15, Color = 1, OwnerId = 3, BreedId = 5},
+            };
+
+            var owners = new Owner[]
+            {
+                new Owner{ Id = 1, Name = "John", Age = 32 },
+                new Owner{ Id = 2, Name = "Jane", Age = 25 },
+                new Owner{ Id = 3, Name = "Jessica", Age = 63 }
+            };
+
+            var breeds = new Breed[]
+            {
+                new Breed{ Id = 1, Name = "Bullmastiff", Origin = "England", Lifespan = 10},
+                new Breed{ Id = 2, Name = "Great Dane", Origin = "Germany", Lifespan = 9},
+                new Breed{ Id = 3, Name = "Newfundland", Origin = "Canada", Lifespan = 8},
+                new Breed{ Id = 4, Name = "Blue Lacy", Origin = "United States", Lifespan = 15},
+                new Breed{ Id = 5, Name = "Bernese Mountain", Origin = "Switzerland", Lifespan = 6}
+            };
+
+            modelBuilder.Entity<Dog>().HasData(dogs);
+            modelBuilder.Entity<Owner>().HasData(owners);
+            modelBuilder.Entity<Breed>().HasData(breeds);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

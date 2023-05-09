@@ -1,8 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VDEHYR_HFT_2022232.Models\VDEHYR_HFT_2022232.Models.csproj" />
+    <ProjectReference Include="..\VDEHYR_HFT_2022232.Repository\VDEHYR_HFT_2022232.Repository.csproj" />
+  </ItemGroup>
 
 </Project>

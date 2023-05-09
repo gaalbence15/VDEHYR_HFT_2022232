@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using VDEHYR_HFT_2022232.Repository.Database;
 
 namespace VDEHYR_HFT_2022232.Client
 {
@@ -6,7 +8,11 @@ namespace VDEHYR_HFT_2022232.Client
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DogsDbContext ctx = new DogsDbContext();
+            var dogs = ctx.Dogs.ToArray();
+            var owners = ctx.Owners.ToArray();
+            var breeds = ctx.Breeds.ToArray();
+            ;
         }
     }
 }

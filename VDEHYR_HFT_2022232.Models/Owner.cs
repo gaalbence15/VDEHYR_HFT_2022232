@@ -19,6 +19,7 @@ namespace VDEHYR_HFT_2022232.Models
         public int Age { get; set; }
         public int DogId { get; set; }
         [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Dog> Dogs { get; set; }
         public Owner() { }
         public Owner(int id, string name, int age)
