@@ -22,7 +22,7 @@ namespace VDEHYR_HFT_2022232.Models
         public int DogId { get; set; }
         [JsonIgnore]
         [NotMapped]
-        public virtual Dog Dogs { get; set; }
+        public virtual Dog Dog { get; set; }
         public Breed() {}
         public Breed(int id, string name, string origin, int lifespan, int dogId)
         {

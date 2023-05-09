@@ -25,7 +25,6 @@ namespace VDEHYR_HFT_2022232.Models
         [StringLength(10)]
         public int Weight { get; set; }
         public int Color { get; set; }
-        public int BreedId { get; set; }
         [JsonIgnore]
         public virtual Breed Breed { get; set; }
         [JsonIgnore]
