@@ -9,10 +9,10 @@ namespace VDEHYR_HFT_2022232.Logic.Interfaces
 {
     public interface IBreedLogic
     {
-        void Create(Dog item);
-        void Update(Dog item);
-        Dog Read(int id);
-        IEnumerable<Dog> ReadAll();
+        void Create(Breed item);
+        void Update(Breed item);
+        Breed Read(int id);
+        IEnumerable<Breed> ReadAll();
         void Delete(int id);
     }
 }
