@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +13,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VDEHYR_HFT_2022232.Logic.Interfaces;
+using VDEHYR_HFT_2022232.Logic.Logics;
+using VDEHYR_HFT_2022232.Models;
+using VDEHYR_HFT_2022232.Repository.Database;
+using VDEHYR_HFT_2022232.Repository.Interfaces;
+using VDEHYR_HFT_2022232.Repository.Repositories;
 
 namespace VDEHYR_HFT_2022232.Endpoint
 {
@@ -26,6 +34,16 @@ namespace VDEHYR_HFT_2022232.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<DogsDbContext>();
+
+            services.AddTransient<IRepository<Owner>, OwnerRepository>();
+            services.AddTransient<IRepository<Dog>, DogRepository>();
+            services.AddTransient<IRepository<Breed>, BreedRepository>();
+
+            services.AddTransient<IOwnerLogic, OwnerLogic>();
+            services.AddTransient<IBreedLogic, BreedLogic>();
+            services.AddTransient<IDogLogic, DogLogic>();
+            services.AddTransient<IExtendMethods, ExtendMethodLogic>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -44,7 +62,14 @@ namespace VDEHYR_HFT_2022232.Endpoint
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VDEHYR_HFT_2022232.Endpoint v1"));
             }
 
-            app.UseHttpsRedirection();
+            app.UseExceptionHandler(c => c.Run(async context =>
+            {
+                var exception = context.Features
+                .Get<IExceptionHandlerPathFeature>()
+                .Error;
+                var response = new { Msg = exception.Message };
+                await context.Response.WriteAsJsonAsync(response);
+            }));
 
             app.UseRouting();
 
