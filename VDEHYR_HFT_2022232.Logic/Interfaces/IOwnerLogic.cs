@@ -9,10 +9,10 @@ namespace VDEHYR_HFT_2022232.Logic.Interfaces
 {
     public interface IOwnerLogic
     {
-        void Create(Dog item);
-        void Update(Dog item);
-        Dog Read(int id);
-        IEnumerable<Dog> ReadAll();
+        void Create(Owner item);
+        void Update(Owner item);
+        Owner Read(int id);
+        IEnumerable<Owner> ReadAll();
         void Delete(int id);
     }
 }
