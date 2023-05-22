@@ -20,9 +20,7 @@ namespace VDEHYR_HFT_2022232.Models
         public int Id { get; set; }
         [StringLength(100)]
         public string Name { get; set; }
-        [StringLength(100)]
         public int BirthYear { get; set; }
-        [StringLength(10)]
         public int Weight { get; set; }
         public int Color { get; set; }
         public int OwnerId { get; set; }
