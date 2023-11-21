@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,13 +95,25 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
         [RelayCommand]
         public void Create()
         {
+            if (InputId != null && InputName != null && InputName != "" && InputAge != null)
+            {
+                Owners.Add(new Owner((int)InputId, InputName, (int)InputAge));
+            }
+            else { MessageBox.Show("Wrong Input!"); }
             SelectedItem = null;
         }
 
         [RelayCommand(CanExecute = nameof(IsButtonExecutable))]
         public void Update()
         {
-            MessageBox.Show(InputId + InputName + InputAge);
+            if (InputId != null && InputName != null && InputName != "" && InputAge != null)
+            {
+                SelectedItem.Id = (int)InputId;
+                SelectedItem.Name = InputName;
+                SelectedItem.Age = (int)InputAge;
+                Owners.Update(SelectedItem);
+            }
+            else { MessageBox.Show("Wrong Input!"); }
             SelectedItem = null;
         }
 
@@ -109,6 +122,14 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
         {
             Owners.Delete(SelectedItem.Id);
             SelectedItem = null;
+        }
+
+        [RelayCommand]
+        public void Return(Window thisWindow)
+        {
+            var window = new MainWindow();
+            window.Show();
+            thisWindow.Close();
         }
 
     }

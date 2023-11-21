@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:VDEHYR_HFT_2022232.WPFClient.ViewModels"
         xmlns:models="clr-namespace:VDEHYR_HFT_2022232.Models;assembly=VDEHYR_HFT_2022232.Models"
         WindowStartupLocation="CenterScreen"
+        x:Name="OwnerEditorWindow"
         mc:Ignorable="d"
         Title="OwnerEditor" Height="450" Width="800">
     <Window.DataContext>
@@ -62,6 +63,7 @@
             <Button DockPanel.Dock="Top" Content="Create" FontSize="18" Padding="5" Margin="5 5 5 0" Command="{Binding CreateCommand}"/>
             <Button DockPanel.Dock="Top" Content="Update" FontSize="18" Padding="5" Margin="5 0 5 0" Command="{Binding UpdateCommand}"/>
             <Button DockPanel.Dock="Top" Content="Delete" FontSize="18" Padding="5" Margin="5 0 5 5" Command="{Binding DeleteCommand}"/>
+            <Button DockPanel.Dock="Bottom" Content="Return" FontSize="18" Padding="5" Margin="5 0 5 5" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=OwnerEditorWindow}"/>
             <Label/>
         </DockPanel>
     </Grid>
