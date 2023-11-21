@@ -4,9 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VDEHYR_HFT_2022232.WPFClient"
+        xmlns:vm="clr-namespace:VDEHYR_HFT_2022232.WPFClient.ViewModels"
+        WindowStartupLocation="CenterScreen"
+        x:Name="ThisWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Main Window" Height="200" Width="270">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <DockPanel>
+            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Owner table"      FontSize="15" Command="{Binding EditOwnersCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Starship table"   FontSize="15" Command="{Binding EditStarshipsCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Hangar table"     FontSize="15" Command="{Binding EditHangarsCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Padding="5" DockPanel.Dock="Top" Content="Query (NonCrud)"    FontSize="15" Command="{Binding QueryCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Label/>
+        </DockPanel>
     </Grid>
 </Window>
