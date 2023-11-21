@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VDEHYR_HFT_2022232.Endpoint.Services;
 using VDEHYR_HFT_2022232.Logic.Interfaces;
 using VDEHYR_HFT_2022232.Logic.Logics;
 using VDEHYR_HFT_2022232.Models;
@@ -86,6 +87,7 @@ namespace VDEHYR_HFT_2022232.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
