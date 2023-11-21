@@ -17,6 +17,14 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
             OwnerWindow.Show();
             window.Close();
         }
+
+        [RelayCommand]
+        public void NonCRUD(Window window)
+        {
+            var Window = new NonCRUD();
+            Window.Show();
+            window.Close();
+        }
         public MainWindowViewModel()
         {
             

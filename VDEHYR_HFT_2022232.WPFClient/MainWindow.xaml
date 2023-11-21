@@ -15,9 +15,9 @@
     <Grid>
         <DockPanel>
             <Button Padding="5" DockPanel.Dock="Top" Content="Edit Owner table"      FontSize="15" Command="{Binding EditOwnersCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
-            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Starship table"   FontSize="15" Command="{Binding EditStarshipsCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
-            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Hangar table"     FontSize="15" Command="{Binding EditHangarsCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
-            <Button Padding="5" DockPanel.Dock="Top" Content="Query (NonCrud)"    FontSize="15" Command="{Binding QueryCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Dogs table"   FontSize="15" Command="{Binding EditDogsCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Padding="5" DockPanel.Dock="Top" Content="Edit Breeds table"     FontSize="15" Command="{Binding EditBreedsCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
+            <Button Padding="5" DockPanel.Dock="Top" Content="NonCrud"    FontSize="15" Command="{Binding NonCRUDCommand}" CommandParameter="{Binding ElementName=ThisWindow}"/>
             <Label/>
         </DockPanel>
     </Grid>
