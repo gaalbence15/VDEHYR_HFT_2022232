@@ -10,13 +10,13 @@ namespace VDEHYR_HFT_2022232.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class OwnerLogicController : ControllerBase
+    public class OwnerController : ControllerBase
     {
         IOwnerLogic logic;
 
         IHubContext<SignalRHub> hub;
 
-        public OwnerLogicController(IOwnerLogic logic, IHubContext<SignalRHub> hub)
+        public OwnerController(IOwnerLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
             this.hub = hub;

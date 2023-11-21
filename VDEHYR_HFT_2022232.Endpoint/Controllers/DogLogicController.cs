@@ -9,13 +9,13 @@ namespace VDEHYR_HFT_2022232.Endpoint.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class DogLogicController : ControllerBase
+    public class DogController : ControllerBase
     {
         IDogLogic logic;
 
         IHubContext<SignalRHub> hub;
 
-        public DogLogicController(IDogLogic logic, IHubContext<SignalRHub> hub)
+        public DogController(IDogLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
             this.hub = hub;
