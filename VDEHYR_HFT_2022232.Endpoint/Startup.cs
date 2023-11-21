@@ -45,6 +45,8 @@ namespace VDEHYR_HFT_2022232.Endpoint
             services.AddTransient<IDogLogic, DogLogic>();
             services.AddTransient<IExtendMethods, ExtendMethodLogic>();
 
+            services.AddSignalR();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -70,6 +72,12 @@ namespace VDEHYR_HFT_2022232.Endpoint
                 var response = new { Msg = exception.Message };
                 await context.Response.WriteAsJsonAsync(response);
             }));
+
+            app.UseCors(x => x
+                  .AllowCredentials()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .WithOrigins("http://localhost:21058"));
 
             app.UseRouting();
 
