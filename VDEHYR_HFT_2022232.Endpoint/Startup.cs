@@ -78,7 +78,7 @@ namespace VDEHYR_HFT_2022232.Endpoint
                   .AllowCredentials()
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  .WithOrigins("http://localhost:21058"));
+                  .WithOrigins("http://localhost:28158"));
 
             app.UseRouting();
 
