@@ -46,8 +46,14 @@
                 <Label Grid.Row="1" Grid.Column="0" Content="Y:" VerticalContentAlignment="Center" FontSize="20" BorderBrush="Gray" BorderThickness="1"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding InputY}" VerticalContentAlignment="Center" FontSize="20" BorderBrush="Gray" BorderThickness="1"/>
             </Grid>
-            <Button DockPanel.Dock="Top" Content="List Dog Stats" FontSize="18" Padding="5" Margin="5 5 5 0" Command="{Binding DogStatsCommand}"/>
+            <Button DockPanel.Dock="Top" Content="List Dog Stats" FontSize="16" Padding="5" Margin="5 5 5 0" Command="{Binding DogStatsCommand}"/>
+            <Button DockPanel.Dock="Top" Content="Dogs Born Before X, Is Breed Of Y" FontSize="16" Padding="5" Margin="5 5 5 0" Command="{Binding DogsBornBeforeIsBreedCommand}"/>
+            <Button DockPanel.Dock="Top" Content="Dogs Born After X, Is Breed Of Y" FontSize="16" Padding="5" Margin="5 5 5 0" Command="{Binding DogsBornAfterIsBreedCommand}"/>
+            <Button DockPanel.Dock="Top" Content="Breed With Dogs More Than X" FontSize="16" Padding="5" Margin="5 5 5 0" Command="{Binding BreedWithDogsMoreThanCommand}"/>
+            <Button DockPanel.Dock="Top" Content="Owner With More Dogs Than X" FontSize="16" Padding="5" Margin="5 5 5 0" Command="{Binding OwnerWithMoreDogsThanCommand}"/>
+            <Button DockPanel.Dock="Top" Content="Owner With More Dogs Than X And Older Than Y" FontSize="16" Padding="5" Margin="5 5 5 0" Command="{Binding OwnerWithMoreDogsThanAndOlderThanCommand}"/>
             <Button DockPanel.Dock="Bottom" Content="Return" FontSize="18" Padding="5" Margin="5 0 5 5" Command="{Binding ReturnCommand}" CommandParameter="{Binding ElementName=NonCRUDWindow}"/>
+            
             <Label/>
         </DockPanel>
     </Grid>
