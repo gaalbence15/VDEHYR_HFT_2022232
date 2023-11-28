@@ -2,9 +2,51 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Dog Editor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="CSS/style.css" rel="stylesheet" />
 </head>
 <body>
-    Dog
+    <h1 class="display-2">Dog Editor</h1>
+    <div id="formDiv" class="container px-5">
+        <div class="mb-2">
+            <label class="form-label">ID</label>
+            <input type="text" id="itemId" class="form-control"/>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Name</label>
+            <input type="text" id="itemName" class="form-control"/>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Birthyear</label>
+            <input type="text" id="itemBirth" class="form-control"/>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Weight</label>
+            <input type="text" id="itemWeight" class="form-control"/>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Color</label>
+            <input type="text" id="itemColor" class="form-control"/>
+        </div>
+        <button type="button" class="btn btn-success" onclick="create()">Create</button>
+    </div>
+    <div class="container pt-5">
+        <table class="table table-striped">
+            <thead id="displayHeader">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Birthyear</th>
+                    <th>Weight</th>
+                    <th>Color</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="displayItems"></tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="Script/dogS.js"></script>
 </body>
 </html>

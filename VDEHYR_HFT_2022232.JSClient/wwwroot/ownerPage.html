@@ -7,34 +7,36 @@
     <link href="CSS/style.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Owner Editor</h1>
-    <div id="formDiv">
-        <div>
-            <label>ID</label>
-            <input type="text" id="itemId" />
+    <h1 class="display-2">Owner Editor</h1>
+    <div id="formDiv" class="container px-5">
+        <div class="mb-2">
+            <label class="form-label">ID</label>
+            <input type="text" id="itemId" class="form-control"/>
         </div>
-        <div>
-            <label>Name</label>
-            <input type="text" id="itemName" />
+        <div class="mb-2">
+            <label class="form-label">Name</label>
+            <input type="text" id="itemName" class="form-control"/>
         </div>
-        <div>
-            <label>Age</label>
-            <input type="text" id="itemAge" />
+        <div class="mb-2">
+            <label class="form-label">Age</label>
+            <input type="text" id="itemAge" class="form-control"/>
         </div>
-        <button type="button" onclick="create()">Create</button>
+        <button type="button" class="btn btn-success" onclick="create()">Create</button>
     </div>
-    <table>
-        <thead id="displayHeader">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="displayItems">
-        </tbody>
-    </table>
+    <div class="container pt-5">
+        <table class="table table-striped">
+            <thead id="displayHeader">
+                <tr>
+                    <th>IDs</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="displayItems">
+            </tbody>
+        </table>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="Script/ownerS.js"></script>
 </body>

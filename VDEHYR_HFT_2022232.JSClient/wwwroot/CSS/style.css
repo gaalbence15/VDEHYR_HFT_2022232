@@ -1,15 +1,6 @@
 ﻿h1 {
     text-align: center;
 }
-#formDiv{
-    width: 90%;
-    background-color: lightgray;
-    margin: auto;
-    padding: 10px;
-}
-#formDiv label {
-    width: 60px;
-}
 table {
     width: 90%;
     margin: auto;
