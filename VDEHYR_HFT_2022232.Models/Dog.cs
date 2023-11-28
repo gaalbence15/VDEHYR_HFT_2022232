@@ -46,6 +46,18 @@ namespace VDEHYR_HFT_2022232.Models
             OwnerId = ownerId;
             BreedId = breedId;
         }
+        public Dog(int id, string name, int birthYear, int weight/*, int color*/)
+        {
+            //if (!(color > 0 && color <= 5))
+            //{
+            //    throw new ArgumentException("Wrong color code!");
+            //}
+            Id = id;
+            Name = name;
+            BirthYear = birthYear;
+            Weight = weight;
+            //Color = color;
+        }
         public override string ToString()
         {
             return $"{Id} - {Name}: {(ColorBases)Color} dog, born in {BirthYear}, weighing {Weight} kgs";
