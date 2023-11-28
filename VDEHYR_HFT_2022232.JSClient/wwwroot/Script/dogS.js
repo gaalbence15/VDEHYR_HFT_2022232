@@ -4,7 +4,7 @@ const itemDisplayElement = document.getElementById('displayItems');
 getData();
 setupSignalR();
 async function getData() {
-    await fetch('http://localhost:21058/Owner')
+    await fetch('http://localhost:21058/Dog')
         .then(x => x.json())
         .then(y => {
             display = y;
@@ -18,15 +18,15 @@ function setupSignalR() {
         .configureLogging(signalR.LogLevel.Information)
         .build()
 
-    connection.on("OwnerCreated", (user, message) => {
+    connection.on("DogCreated", (user, message) => {
         getData();
     });
 
-    connection.on("OwnerDeleted", (user, message) => {
+    connection.on("DogDeleted", (user, message) => {
         getData();
     });
 
-    connection.on("OwnerUpdated", (user, message) => {
+    connection.on("DogUpdated", (user, message) => {
         getData();
     });
 
@@ -47,11 +47,11 @@ async function start() {
 function displayItems() {
     itemDisplayElement.innerHTML = null;
     display.forEach(t => {
-        itemDisplayElement.innerHTML += "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.age + "</td><td><button class='btn btn-success' type='button' onclick='deleteItem(" + t.id + ")'>Delete</button></td></tr>"
+        itemDisplayElement.innerHTML += "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.birthYear + "</td><td>" + t.weight + "</td><td>" + t.color + "</td><td><button class='btn btn-success' type='button' onclick='deleteItem(" + t.id + ")'>Delete</button></td></tr>"
     });
 }
 function deleteItem(id) {
-    fetch('http://localhost:21058/Owner/' + id, {
+    fetch('http://localhost:21058/Dog/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null,
