@@ -19,15 +19,28 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
         }
 
         [RelayCommand]
+        public void EditDogs(Window window)
+        {
+            var DogWindow = new DogEditor();
+            DogWindow.Show();
+            window.Close();
+        }
+
+        [RelayCommand]
+        public void EditBreeds(Window window)
+        {
+            var BreedWindow = new BreedEditor();
+            BreedWindow.Show();
+            window.Close();
+        }
+
+        [RelayCommand]
         public void NonCRUD(Window window)
         {
             var Window = new NonCRUD();
             Window.Show();
             window.Close();
         }
-        public MainWindowViewModel()
-        {
-            
-        }
+        public MainWindowViewModel() { }
     }
 }
