@@ -2,9 +2,55 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>NonCRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="CSS/style.css" rel="stylesheet" />
 </head>
 <body>
-    NonCRUD
+    <div>
+        <button onclick="window.location.href='index.html'" class="btn btn-warning">Return</button>
+    </div>
+    <h1 class="display-2">Non Crud Methods</h1>
+    <div id="NonCrudControls" class="container px-5">
+        <div class="row">
+            <div id="nonCrudButtons" class="btn-group-vertical col">
+                <span class="label label-default"></span>
+                <button type="button" class="btn btn-success" onclick="DogsBornBeforeIsBreed()">Dogs Born Before (Year) And Is Breed Of (BreedId)</button>
+                <button type="button" class="btn btn-success" onclick="DogsBornAfterIsBreed()">Dogs Born After (Year) And Is Breed Of (BreedId)</button>
+                <button type="button" class="btn btn-success" onclick="BreedWithDogsMoreThan()">Breed With More Dogs Than (Count)</button>
+                <button type="button" class="btn btn-success" onclick="OwnerWithMoreDogsThan()">Owners With More Dogs Than (Count)</button>
+                <button type="button" class="btn btn-success" onclick="OwnerWithMoreDogsThanAndOlderThan()">Owner With More Dogs Than (Count) And Older Than (Year)</button>
+                <button type="button" class="btn btn-success" onclick="DogStats()">List Dog Stats</button>
+            </div>
+            <div id="formDiv" class="container px-5 col">
+                <div class="mb-2">
+                    <label class="form-label">Year:</label>
+                    <input type="text" id="variableYear" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Count:</label>
+                    <input type="text" id="variableCount" class="form-control" />
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">BreedId:</label>
+                    <input type="text" id="variableBId" class="form-control" />
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container pt-5">
+        <table class="table table-striped">
+            <thead id="displayHeader">
+                <tr>
+                    <th colspan="5">Items</th>
+                </tr>
+            </thead>
+            <tbody id="displayItems">
+                <!--<tr><td> t.id</td><td>t.name</td><td>t.birthYear</td><td>t.weight</td><td>t.color</td></tr>-->
+            </tbody>
+        </table>
+    </div>
+    <script src="Script/nonCrudS.js"></script>
 </body>
 </html>

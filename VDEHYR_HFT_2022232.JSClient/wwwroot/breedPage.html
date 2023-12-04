@@ -9,6 +9,7 @@
 <body>
     <h1 class="display-2">Breed Editor</h1>
     <div id="formDiv" class="container px-5">
+        <h2 class="display-3">Create</h2>
         <div class="mb-2">
             <label class="form-label">ID</label>
             <input type="text" id="itemId" class="form-control" />
@@ -19,13 +20,33 @@
         </div>
         <div class="mb-2">
             <label class="form-label">Origin</label>
-            <input type="text" id="itemBirth" class="form-control" />
+            <input type="text" id="itemOrigin" class="form-control" />
         </div>
         <div class="mb-2">
             <label class="form-label">Lifespan</label>
-            <input type="text" id="itemWeight" class="form-control" />
+            <input type="text" id="itemLifespan" class="form-control" />
         </div>
         <button type="button" class="btn btn-success" onclick="create()">Create</button>
+    </div>
+    <div id="updateDiv" class="container px-5" style="display: none">
+        <h2 class="display-3">Update</h2>
+        <div class="mb-2">
+            <label class="form-label">ID</label>
+            <input type="text" id="updateId" class="form-control" readonly/>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Name</label>
+            <input type="text" id="updateName" class="form-control" />
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Origin</label>
+            <input type="text" id="updateOrigin" class="form-control" />
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Lifespan</label>
+            <input type="text" id="updateLifespan" class="form-control" />
+        </div>
+        <button type="button" class="btn btn-success" onclick="update()">Update</button>
     </div>
     <div class="container pt-5">
         <table class="table table-striped">
