@@ -18,8 +18,4 @@
     <ProjectReference Include="..\VDEHYR_HFT_2022232.Models\VDEHYR_HFT_2022232.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
-
 </Project>
