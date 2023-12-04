@@ -1,6 +1,17 @@
 let display = [];
 let connection = null;
 const itemDisplayElement = document.getElementById('displayItems');
+
+const IdElement = document.getElementById('itemId');
+const NameElement = document.getElementById('itemName');
+const OriginElement = document.getElementById('itemOrigin');
+const LifespanElement = document.getElementById('itemId');
+
+const updateIdElement = document.getElementById('updateId');
+const updateNameElement = document.getElementById('updateName');
+const updateOriginElement = document.getElementById('updateOrigin');
+const updateLifespanElement = document.getElementById('updateLifespan');
+
 getData();
 setupSignalR();
 async function getData() {
@@ -47,7 +58,7 @@ async function start() {
 function displayItems() {
     itemDisplayElement.innerHTML = null;
     display.forEach(t => {
-        itemDisplayElement.innerHTML += "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.origin + "</td><td>" + t.lifespan + "</td><td><button class='btn btn-success' type='button' onclick='deleteItem(" + t.id + ")'>Delete</button></td></tr>"
+        itemDisplayElement.innerHTML += "<tr><td>" + t.id + "</td><td>" + t.name + "</td><td>" + t.origin + "</td><td>" + t.lifespan + "</td><td><button class='btn btn-success' type='button' onclick='deleteItem(" + t.id + ")'>Delete</button><button class='btn btn-success' type='button' onclick='showUpdate(" + t.id + ")'>Update</button></td></tr>"
     });
 }
 function deleteItem(id) {
@@ -62,4 +73,65 @@ function deleteItem(id) {
             getData();
         })
         .catch((error) => { console.error('Error:', error) });
+}
+
+function create() {
+    let id = Number(IdElement.value);
+    let name = NameElement.value;
+    let origin = OriginElement.value;
+    let lifespan = Number(LifespanElement.value);
+
+    fetch('http://localhost:21058/Breed', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify({ id: id, name: name, origin: origin, lifespan: lifespan })
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success: ', data);
+            getData();
+        })
+        .catch((error) => { console.error('Error:', error) });
+
+    IdElement.value = null;
+    NameElement.value = null;
+    OriginElement.value = null;
+    LifespanElement.value = null;
+}
+
+function showUpdate(id) {
+    var toBeUpdated = display.find(d => d['id'] == id);
+    document.getElementById("updateDiv").style.display = null;
+    document.getElementById("formDiv").style.display = "none";
+
+    updateIdElement.value = toBeUpdated.id;
+    updateNameElement.value = toBeUpdated.name;
+    updateOriginElement.value = toBeUpdated.origin;
+    updateLifespanElement.value = toBeUpdated.lifespan;
+}
+
+function update() {
+    document.getElementById("updateDiv").style.display = "none";
+    document.getElementById("formDiv").style.display = null;
+    let id = Number(updateIdElement.value);
+    let name = updateNameElement.value;
+    let origin = updateOriginElement.value;
+    let lifespan = Number(updateLifespanElement.value);
+
+    fetch('http://localhost:21058/Breed', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify({ id: id, name: name, origin: origin, lifespan: lifespan })
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success: ', data);
+            getData();
+        })
+        .catch((error) => { console.error('Error:', error) });
+
+    updateIdElement.value = null;
+    updateNameElement.value = null;
+    updateOriginElement.value = null;
+    updateLifespanElement.value = null;
 }
