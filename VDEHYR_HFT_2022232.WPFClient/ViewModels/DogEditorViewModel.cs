@@ -39,7 +39,7 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
                     InputName = value.Name;
                     InputBirthyear = value.BirthYear;
                     InputWeight = value.Weight;
-                    //InputColor = value.Color;
+                    InputColor = value.Color;
                 }
                 else
                 {
@@ -47,7 +47,7 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
                     InputName = null;
                     InputBirthyear = null;
                     InputWeight = null;
-                    //InputColor = null;
+                    InputColor = null;
                 }
             }
         }
@@ -80,12 +80,12 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
             set => SetProperty(ref inputWeight, value);
         }
 
-        ////private int? inputColor;
-        ////public int? InputColor
-        ////{
-        ////    get { return InputColor; }
-        ////    set => SetProperty(ref inputColor, value);
-        ////}
+        private int? inputColor;
+        public int? InputColor
+        {
+            get { return inputColor; }
+            set => SetProperty(ref inputColor, value);
+        }
 
         public bool IsButtonExecutable()
         {
@@ -112,9 +112,9 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
         [RelayCommand]
         public void Create()
         {
-            if (InputId != null && InputName != null && InputName != "" && InputBirthyear != null && InputWeight != null/* && InputColor != null*/)
+            if (InputId != null && InputName != null && InputName != "" && InputBirthyear != null && InputWeight != null && InputColor != null)
             {
-                Dogs.Add(new Dog((int)InputId, InputName, (int)InputBirthyear, (int)InputWeight/*, (int)InputColor*/));
+                Dogs.Add(new Dog((int)InputId, InputName, (int)InputBirthyear, (int)InputWeight, (int)InputColor));
             }
             else { MessageBox.Show("Wrong Input!"); }
             SelectedItem = null;
@@ -123,13 +123,13 @@ namespace VDEHYR_HFT_2022232.WPFClient.ViewModels
         [RelayCommand(CanExecute = nameof(IsButtonExecutable))]
         public void Update()
         {
-            if (InputId != null && InputName != null && InputName != "" && InputBirthyear != null && InputWeight != null/* && InputColor != null*/)
+            if (InputId != null && InputName != null && InputName != "" && InputBirthyear != null && InputWeight != null && InputColor != null)
             {
                 SelectedItem.Id = (int)InputId;
                 SelectedItem.Name = InputName;
                 SelectedItem.BirthYear = (int)InputBirthyear;
                 SelectedItem.Weight = (int)InputWeight;
-                //SelectedItem.Color = (int)InputColor;
+                SelectedItem.Color = (int)InputColor;
                 Dogs.Update(SelectedItem);
             }
             else { MessageBox.Show("Wrong Input!"); }
